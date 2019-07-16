@@ -27,7 +27,7 @@ else
     end
 
     system('git add -A')
-    system('git commit -m "freak"')
+    system('git commit -q -m "freak"')
     system('git push -q')
   ensure
     system('git checkout -q #{branch}')
