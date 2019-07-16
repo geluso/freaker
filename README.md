@@ -35,3 +35,4 @@ autocmd BufWritePost * execute 'silent !freak'
 hi
 hello
 no
+nonono
