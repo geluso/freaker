@@ -31,3 +31,4 @@ function freak() {
 ```vim
 autocmd BufWritePost * execute 'silent !freak'
 ```
+test
