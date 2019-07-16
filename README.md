@@ -32,4 +32,3 @@ function freak() {
 autocmd BufWritePost * execute 'silent !freak'
 ```
 
-test
