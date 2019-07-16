@@ -10,8 +10,29 @@ Depends on the presence of a file `freak`.
 **freaker.rb**
 ```ruby
 #!/Users/sgeluso/.rvm/rubies/ruby-2.6.3/bin/ruby
-puts "hi"
 `say ruby`
+status = `git status`
+if status.include? "nothing to commit, working tree clean"
+  puts "no changes"
+else
+  branches = `git branch`.split
+  index = branches.index('*') + 1
+  branch = branches[index]
+
+  begin
+    puts "creating branch freak_#{branch}"
+    create_branch = `git checkout -b freak_#{branch}`
+    if create_branch.include? 'already exists'
+      `git checkout freak_#{branch}`
+    end
+
+    system('git add -A')
+    system('git commit -m "freak"')
+    system('git push -q')
+  ensure
+    system('git checkout -q #{branch}')
+  end
+end
 ```
 
 **.zshevn**
